@@ -77,23 +77,6 @@ def print_all_ratings(film_id, cursor):
 def name_is_valid(first_name, last_name):
     return len(first_name) <= MAX_LEN and len(last_name) <= MAX_LEN
         
-# Blocking function until we get a valid film name from the user
-def ask_for_filmname():
-    user_filmname = ""
-    film_id = UNINITIALIZED
-    while(UNVALID):
-        user_filmname = input("Please enter the film name you would like to review: ")
-        if not exist_in_db(user_filmname, USERS):
-            print("The film youv'e entered does not exist")
-            continue
-        elif len(get_num_of_records(user_filmname, FILM)) > 2:
-            present_films(user_filmname)
-            film_id = input("Enter your film id")
-            if not exist_in_db(film_id, FILM):
-                continue
-            else:
-                UNVALID = False
-    return user_filmname, film_id
 
 def main():
 
